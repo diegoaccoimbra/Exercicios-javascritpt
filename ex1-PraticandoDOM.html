@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somador</title>
+    <style>
+        body {
+            margin: auto;
+            text-align: center;
+            font: normal 1em Arial, Helvetica, sans-serif;
+            background-color: rgb(19, 89, 158);
+        }
+
+        header {
+            background-color: rgb(6, 27, 49);;
+            color: white;
+            margin: auto;
+            padding: 10px;
+        }
+
+        main {
+            background-color: white;
+            min-width: 300px;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        input {
+            font: normal 1em Arial, Helvetica, sans-serif;
+            width: 100px;
+            height: 30px;
+        }
+
+        div#resultado {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Somando Valores</h1>
+    </header>
+    <main>
+        <input type="number" name="stringN1" id="stringN1"> +
+        <input type="number" name="stringN2" id="stringN2">
+        <input type="button" value="Somar" onclick="somar()">
+        <div id="resultado">Aqui vai o resultado da soma</div>
+    </main>
+
+    <script>
+        function somar() {
+            //Criando os objetos que vão pegar o valor digitado no input
+            var stringN1 = window.document.querySelector("input#stringN1")
+            var stringN2 = window.document.querySelector("input#stringN2")
+            //Criando o objeto que se associa com a div onde vai aparecer o resultado da soma
+            var resultado = window.document.querySelector("div#resultado")
+
+            //Convertendo o valor digitado pra number, já que eles são primeiramente armazenados como string
+            var n1 = Number(stringN1.value)
+            var n2 = Number(stringN2.value)
+            soma = n1 + n2
+
+            resultado.innerHTML = `A soma entre ${n1} e ${n2} é igual a ${soma}`
+
+        }
+    </script>
+</body>
+</html>
