@@ -41,12 +41,23 @@ function conferirPalpite() {
 
         //Colocando a mensagem vazia nesse objeto pra não aparecer se o valor é alto ou baixo quando o usuário acertar.
         altoOuBaixo.innerHTML = ""
+
+        //Função que finaliza o jogo.
+        fimDeJogo()
     }
-    //Aqui verifica se o limite de palpites foi atingido. Se sim, exibe a mensagen abaixo.
+    //Aqui verifica se o limite de palpites foi atingido. Se sim, exibe a mensagen abaixo com os estilos aplicados.
     else if (contagemPalpites === 10) {
         ultimoResultado.innerHTML = "Você atingiu o limite de palpites."
+        ultimoResultado.style.backgroundColor = "lightcoral"
+        ultimoResultado.style.maxWidth = "250px"
+        ultimoResultado.style.padding = "10px"
+        ultimoResultado.style.borderRadius = "5px"
+
         //altoOuBaixo com a mensagem vazia pra não aparecer quando o limite for atingido.
         altoOuBaixo.innerHTML = ""
+
+        //Função que finaliza o jogo.
+        fimDeJogo()
     }
     //Aqui é caso o número digitado seja errado. Exibindo a seguinte mensagem com o estilos aplicados.
     else {
@@ -56,7 +67,7 @@ function conferirPalpite() {
         ultimoResultado.style.padding = "10px"
         ultimoResultado.style.borderRadius = "5px"
 
-        //Verificando se o número digitado é maior ou menor que o número aleatório escolhido pelo computador para exibir a mensagem de o valor está alto ou baixo.
+        //Verificando se o número digitado é maior ou menor que o número aleatório escolhido pelo computador para exibir a mensagem de que o valor está alto ou baixo.
         if (numeroDigitado < numeroAleatorio) {
             altoOuBaixo.innerHTML = "O seu palpite está baixo"
         }
@@ -66,6 +77,55 @@ function conferirPalpite() {
     }
 
 
-    //Atualizando o contador de palpites
+    //Atualizando o contador de palpites.
     contagemPalpites = contagemPalpites + 1
+    //Deixando o campo de palpites vazio.
+    numero.value = ""
+    //Colocando o foco no campo de palpites para facilitar a digitação do usuário.
+    numero.focus()
+
+    //Função pra finalizar o jogo.
+    function fimDeJogo() {
+        //Desativando a entrada de texto do campo de palpites e o clique no botão de enviar.
+        numero.disabled = true
+        enviar.disabled = true
+
+        //Criando o elemento "botão de reiniciar o jogo".
+        botaoReiniciar = document.createElement("button")
+
+        //Adicionando o conteúdo de "Jogar novamente" ao botão.
+        botaoReiniciar.innerHTML = "Jogar novamente"
+        
+        //Adicionando o elemento no final do código HTML.
+        document.body.appendChild(botaoReiniciar)
+        
+        //Event listener que quando disparado executa a função de reinicar o jogo.
+        botaoReiniciar.addEventListener("click", reiniciarJogo)
+    }
+
+    //Função pra reiniciar o jogo.
+    function reiniciarJogo() {
+        //Colocando a contagem dos palpites em 1 novamente.
+        contagemPalpites = 1
+
+        //Colocando os campos da área de resultados vazios novamente.
+        palpites.innerHTML = ""
+        ultimoResultado.innerHTML = ""
+        ultimoResultado.style.backgroundColor = "white"
+        altoOuBaixo.innerHTML = ""
+
+        //Ativando a entrada de texto do campo de palpites e o clique do botão de enviar.
+        numero.disabled = false
+        enviar.disabled = false
+        //Deixando o campo de palpites vazio.
+        numero.value = ""
+        //Colocando o foco no campo de palpites para facilitar a digitação do usuário.
+        numero.focus()
+
+        //Removendo o botão de reiniciar o jogo.
+        botaoReiniciar.parentNode.removeChild(botaoReiniciar)
+
+        //Gerando um novo número aleatório pro novo jogo.
+        numeroAleatorio = Math.floor(Math.random() * 100) + 1
+    }
 }
