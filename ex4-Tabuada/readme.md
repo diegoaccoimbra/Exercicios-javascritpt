@@ -1,0 +1,1 @@
+Crie um programa que recebe um número e exibe a tabuada dele (de 0 a 10).
