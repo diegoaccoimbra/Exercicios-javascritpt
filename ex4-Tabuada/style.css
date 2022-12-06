@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+body {
+    margin: auto;
+    text-align: center;
+    background-color: darkslateblue;
+    color: white;
+    font: normal 1em Arial, Helvetica, sans-serif;
+}
+
+main {
+    background-color: white;
+    color: black;
+    text-align: justify;
+    margin: auto;
+    padding: 20px 40px;
+    min-width: 300px;
+    max-width: 700px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px #00000075;
+}
+
+input, button, select {
+    font: normal 1em Arial, Helvetica, sans-serif;
+    margin: 15px 5px;
+}
+
+a {
+    color: white;
+    font-weight: bold;
+}
