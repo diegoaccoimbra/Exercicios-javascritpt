@@ -1,0 +1,1 @@
+Faça um programa de um contador que receba um número de início, um número final para a contagem e o passo.
